@@ -46,6 +46,9 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
   [#1774](https://github.com/pry/pry/pull/1762))
 * Fixed `NoMethodError` on code objects that have a comment but no source when
   invoking `show-source` ([#1779](https://github.com/pry/pry/pull/1779))
+* Fixed `negative argument (ArgumentError)` upon pasting code with tabs, which
+  used to confuse automatic indentation
+  ([#1771](https://github.com/pry/pry/pull/1771))
 
 #### Pry developers
 
