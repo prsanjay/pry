@@ -49,6 +49,7 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
 * Fixed `negative argument (ArgumentError)` upon pasting code with tabs, which
   used to confuse automatic indentation
   ([#1771](https://github.com/pry/pry/pull/1771))
+* Dropped support for Rubinius ([#1785](https://github.com/pry/pry/pull/1785))
 
 #### Pry developers
 
