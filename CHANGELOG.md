@@ -8,7 +8,7 @@
 * Add a new command, "gem-stat", inspired by the rubygem of a similar
   name (gem-stats) by [@dannytatom](https://github.com/dannytatom).
 
-See pull request [#1705](https://github.com/pry/pry/pull/1705].
+See pull request [#1705](https://github.com/pry/pry/pull/1705).
 
 * Add Pry::Platform#known_engines, returns an Array of Ruby engines
   (MRI, JRuby, Rubinius) that Pry is known to run on.
