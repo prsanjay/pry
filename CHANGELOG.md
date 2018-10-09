@@ -50,6 +50,8 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
   used to confuse automatic indentation
   ([#1771](https://github.com/pry/pry/pull/1771))
 * Dropped support for Rubinius ([#1785](https://github.com/pry/pry/pull/1785))
+* Added support for nested exceptions for the `wtf` command
+  ([#1791](https://github.com/pry/pry/pull/1791))
 
 #### Pry developers
 
