@@ -54,6 +54,8 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
   ([#1791](https://github.com/pry/pry/pull/1791))
 * Fixed Pry not being able to load history on Ruby 2.4.4+ when it contains the
   null character ([#1789](https://github.com/pry/pry/pull/1789))
+* Deleted the `Pry::Helpers::Text.bright_default` alias for
+  `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
 
 #### Pry developers
 
