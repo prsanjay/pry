@@ -56,6 +56,21 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
   null character ([#1789](https://github.com/pry/pry/pull/1789))
 * Deleted the `Pry::Helpers::Text.bright_default` alias for
   `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
+* The following methods start accepting the new optional `config` parameter:
+  * `Pry::Helpers.tablify(things, line_length, config = Pry.config)`
+  * `Pry::Helpers.tablify_or_one_line(heading, things, config = Pry.config)`
+  * `Pry::Helpers.tablify_to_screen_width(things, options, config = Pry.config)`
+  * `Pry::Helpers::Table.new(items, args, config = Pry.config)`
+
+  You are expected to pass a session-local `_pry_.config` instead of the global
+  one.
+
+  **Breaking changes:**
+
+  * `Pry::Helpers.tablify_to_screen_width(things, options, config = Pry.config)`
+    requires `options` or `nil` in place of them.
+  * `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
+    or `nil` in place of them.
 
 #### Pry developers
 
