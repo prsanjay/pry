@@ -71,6 +71,9 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
     requires `options` or `nil` in place of them.
   * `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
     or `nil` in place of them.
+* Fixed Pry raising errors on `cd`'ing into some objects that redefine
+  `method_missing` and `respond_to?`
+  ([#1811](https://github.com/pry/pry/pull/1811))
 
 #### Pry developers
 
