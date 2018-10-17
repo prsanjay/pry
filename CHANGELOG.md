@@ -1,62 +1,25 @@
 ### HEAD
 
+#### Major changes
+
+* Dropped support for Rubinius ([#1785](https://github.com/pry/pry/pull/1785))
+
 #### Features
 
-* Add a new command, "clear-screen", that clears the content of the
-  screen Pry is running in regardless of platform (Windows or UNIX-like).
-
-* Add a new command, "gem-stat", inspired by the rubygem of a similar
-  name (gem-stats) by [@dannytatom](https://github.com/dannytatom).
-
-See pull request [#1705](https://github.com/pry/pry/pull/1705).
-
-* Add Pry::Platform#known_engines, returns an Array of Ruby engines
-  (MRI, JRuby, Rubinius) that Pry is known to run on.
-
-See pull request [#1694](https://github.com/pry/pry/pull/1694).
-
-* Deprecate Pry::Command#text. Please use black(), white(), etc directly
-  instead (as you would with helper functions from BaseHelpers and
-  CommandHelpers)
-
-See pull request [#1701](https://github.com/pry/pry/pull/1701).
-
-* Add new method Pry::Config.assign(), for creating a Config non-recursively.
-
-See pull request [#1723](https://github.com/pry/pry/pull/1723)
-
-#### Bug fixes
-
-* Add 'Data' as a deprecated constant for Ruby 2.5 (ls command).
-
-See pull request [#1731](https://github.com/pry/pry/pull/1731)
-
-* Fix a bug where 'cd Hash.new' reported self as an instance of Pry::Config
-  in the prompt.
-
-See pull request [#1723](https://github.com/pry/pry/pull/1723)
-
-* Silenced the `Could not find files for the given pattern(s)` error message
-  coming from `where` on Windows, when `less` or another pager is not installed
-  ([#1767](https://github.com/pry/pry/pull/1767))
-* Fixed possible double loading of Pry plugins' `cli.rb` on Ruby (>= 2.4) due to
-  [the `realpath` changes while invoking
-  `require`](https://bugs.ruby-lang.org/issues/10222)
-  ([#1762](https://github.com/pry/pry/pull/1762),
-  [#1774](https://github.com/pry/pry/pull/1762))
-* Fixed `NoMethodError` on code objects that have a comment but no source when
-  invoking `show-source` ([#1779](https://github.com/pry/pry/pull/1779))
-* Fixed `negative argument (ArgumentError)` upon pasting code with tabs, which
-  used to confuse automatic indentation
-  ([#1771](https://github.com/pry/pry/pull/1771))
-* Dropped support for Rubinius ([#1785](https://github.com/pry/pry/pull/1785))
+* Added a new command, `clear-screen`, that clears the content of the screen Pry
+  is running in regardless of platform (Windows or UNIX-like)
+  ([#1723](https://github.com/pry/pry/pull/1723))
+* Added a new command, `gem-stat`, that prints gem statistics such as gem
+  dependencies and downloads ([#1707](https://github.com/pry/pry/pull/1707))
+* Added `Pry::Platform#known_engines`, which returns an Array of Ruby engines
+  (MRI, JRuby) that Pry is known to run on ([#1694](https://github.com/pry/pry/pull/1694))
 * Added support for nested exceptions for the `wtf` command
   ([#1791](https://github.com/pry/pry/pull/1791))
-* Fixed Pry not being able to load history on Ruby 2.4.4+ when it contains the
-  null character ([#1789](https://github.com/pry/pry/pull/1789))
-* Deleted the `Pry::Helpers::Text.bright_default` alias for
-  `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
-* The following methods start accepting the new optional `config` parameter:
+
+#### API changes
+
+* The following methods started accepting the new optional `config` parameter
+  ([#1809](https://github.com/pry/pry/pull/1809)):
   * `Pry::Helpers.tablify(things, line_length, config = Pry.config)`
   * `Pry::Helpers.tablify_or_one_line(heading, things, config = Pry.config)`
   * `Pry::Helpers.tablify_to_screen_width(things, options, config = Pry.config)`
@@ -71,17 +34,42 @@ See pull request [#1723](https://github.com/pry/pry/pull/1723)
     requires `options` or `nil` in place of them.
   * `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
     or `nil` in place of them.
+
+* Deprecated `Pry::Command#text`. Please use `#black`, `#white`, etc. directly
+  instead (as you would with helper functions from `BaseHelpers` and
+  `CommandHelpers`) ([#1701](https://github.com/pry/pry/pull/1701))
+* Added new method `Pry::Config.assign`, for creating a Config non-recursively
+  ([#1725](https://github.com/pry/pry/issues/1725))
+* Deleted the `Pry::Helpers::Text.bright_default` alias for
+  `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
+
+#### Bug fixes
+
+* Fixed a bug where `cd Hash.new` reported `self` as an instance of Pry::Config
+  in the prompt ([#1725](https://github.com/pry/pry/pull/1725))
+* Silenced the `Could not find files for the given pattern(s)` error message
+  coming from `where` on Windows, when `less` or another pager is not installed
+  ([#1767](https://github.com/pry/pry/pull/1767))
+* Fixed possible double loading of Pry plugins' `cli.rb` on Ruby (>= 2.4) due to
+  [the `realpath` changes while invoking
+  `require`](https://bugs.ruby-lang.org/issues/10222)
+  ([#1762](https://github.com/pry/pry/pull/1762),
+  [#1774](https://github.com/pry/pry/pull/1762))
+* Fixed `NoMethodError` on code objects that have a comment but no source when
+  invoking `show-source` ([#1779](https://github.com/pry/pry/pull/1779))
+* Fixed `negative argument (ArgumentError)` upon pasting code with tabs, which
+  used to confuse automatic indentation
+  ([#1771](https://github.com/pry/pry/pull/1771))
+* Fixed Pry not being able to load history on Ruby 2.4.4+ when it contains the
+  null character ([#1789](https://github.com/pry/pry/pull/1789))
 * Fixed Pry raising errors on `cd`'ing into some objects that redefine
   `method_missing` and `respond_to?`
   ([#1811](https://github.com/pry/pry/pull/1811))
 
-#### Pry developers
+#### Other changes
 
-* Optionally skip a spec on specific Ruby engine(s) by providing `expect_failure: [:mri, :jruby]`
-  as a metadata Hash to the example group.
-
-See pull request [#1694](https://github.com/pry/pry/pull/1694).
-
+* Deprecated the `Data` constant to match Ruby 2.5 in the `ls` command
+  ([#1731](https://github.com/pry/pry/pull/1731))
 
 ### 0.11.3
 
