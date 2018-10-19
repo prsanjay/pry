@@ -28,26 +28,26 @@
   You are expected to pass a session-local `_pry_.config` instead of the global
   one.
 
-  **Breaking changes:**
+* Added new method `Pry::Config.assign`, for creating a Config non-recursively
+  ([#1725](https://github.com/pry/pry/issues/1725))
 
-  * `Pry::Helpers.tablify_to_screen_width(things, options, config = Pry.config)`
-    requires `options` or `nil` in place of them.
-  * `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
-    or `nil` in place of them.
+##### Breaking changes
 
+* Deleted the `Pry::Helpers::Text.bright_default` alias for
+  `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
+* `Pry::Helpers.tablify_to_screen_width(things, options, config = Pry.config)`
+  requires `options` or `nil` in place of them.
+* `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
+  or `nil` in place of them.
+
+##### Deprecations
+
+* Deprecated `_pry_.input_array` & `_pry_.output_array` in favour of
+  `_pry_.input_ring` & `_pry_.output_ring` respectively
+  ([#1814](https://github.com/pry/pry/pull/1814))
 * Deprecated `Pry::Command#text`. Please use `#black`, `#white`, etc. directly
   instead (as you would with helper functions from `BaseHelpers` and
   `CommandHelpers`) ([#1701](https://github.com/pry/pry/pull/1701))
-* Added new method `Pry::Config.assign`, for creating a Config non-recursively
-  ([#1725](https://github.com/pry/pry/issues/1725))
-* Deleted the `Pry::Helpers::Text.bright_default` alias for
-  `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
-
-##### Breaking API changes
-
-* Renamed `_pry_.input_array` & `_pry_.output_array` to `_pry_.input_ring` &
-  `_pry_.output_ring` respectively
-  ([#1814](https://github.com/pry/pry/pull/1814))
 
 #### Bug fixes
 
