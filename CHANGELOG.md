@@ -43,6 +43,12 @@
 * Deleted the `Pry::Helpers::Text.bright_default` alias for
   `Pry::Helpers::Text.bold` ([#1795](https://github.com/pry/pry/pull/1795))
 
+##### Breaking API changes
+
+* Renamed `_pry_.input_array` & `_pry_.output_array` to `_pry_.input_ring` &
+  `_pry_.output_ring` respectively
+  ([#1814](https://github.com/pry/pry/pull/1814))
+
 #### Bug fixes
 
 * Fixed a bug where `cd Hash.new` reported `self` as an instance of Pry::Config
