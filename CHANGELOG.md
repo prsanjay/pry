@@ -39,6 +39,17 @@
   requires `options` or `nil` in place of them.
 * `Pry::Helpers::Table.new(items, args, config = Pry.config)` requires `args`
   or `nil` in place of them.
+* Completely revamped `Pry::HistoryArray`
+  ([#1818](https://github.com/pry/pry/pull/1818)).
+  * It's been renamed to `Pry::Ring`
+    ([#1817](https://github.com/pry/pry/pull/1817))
+  * The implementation has changed and as result, the following methods were
+    removed:
+    * `Pry::Ring#size` & `Pry::Ring#length` (use `Pry::Ring#count` instead)
+    * `#empty?`, `#each`, `#inspect`, `#pop!`, `#to_h`
+  * To access old Enumerable methods convert the ring to Array with `#to_a`
+  * Fixed indexing for elements (e.g. `_pry_.input_ring[0]` always return some
+    element and not `nil`)
 
 ##### Deprecations
 
@@ -48,6 +59,9 @@
 * Deprecated `Pry::Command#text`. Please use `#black`, `#white`, etc. directly
   instead (as you would with helper functions from `BaseHelpers` and
   `CommandHelpers`) ([#1701](https://github.com/pry/pry/pull/1701))
+* Deprecated `_pry_.input_array` & `_pry_.output_array` in favour of
+  `_pry_.input_ring` and `_pry_.output_ring` respectively
+  ([#1817](https://github.com/pry/pry/pull/1817))
 
 #### Bug fixes
 
@@ -73,7 +87,7 @@
   ([#1811](https://github.com/pry/pry/pull/1811))
 * Fixed bug when indentation leaves parts of input after pressing enter when
   Readline is enabled with mode indicators for vi or emacs modes
-  ([#1812](https://github.com/pry/pry/pull/1812))
+  ([#1813](https://github.com/pry/pry/pull/1813))
 
 #### Other changes
 
