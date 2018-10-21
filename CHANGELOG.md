@@ -87,7 +87,8 @@
   ([#1811](https://github.com/pry/pry/pull/1811))
 * Fixed bug when indentation leaves parts of input after pressing enter when
   Readline is enabled with mode indicators for vi or emacs modes
-  ([#1813](https://github.com/pry/pry/pull/1813))
+  ([#1813](https://github.com/pry/pry/pull/1813),
+  [#1820](https://github.com/pry/pry/pull/1820))
 
 #### Other changes
 
