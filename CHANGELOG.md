@@ -15,6 +15,18 @@
   (MRI, JRuby) that Pry is known to run on ([#1694](https://github.com/pry/pry/pull/1694))
 * Added support for nested exceptions for the `wtf` command
   ([#1791](https://github.com/pry/pry/pull/1791))
+* Added support for dynamic prompt names
+  ([#1833](https://github.com/pry/pry/pull/1833))
+
+  ```rb
+  # pryrc
+  Pry.config.prompt_name = Pry.lazy { rand(100) }
+
+  # Session
+  [1] 80(main)>
+  [2] 87(main)>
+  [3] 30(main)>
+  ```
 
 #### API changes
 
@@ -30,6 +42,9 @@
 
 * Added new method `Pry::Config.assign`, for creating a Config non-recursively
   ([#1725](https://github.com/pry/pry/issues/1725))
+* Added `Pry.lazy`, which is a helper method for values that need to be
+  calculated dynamically. Currently, only `config.prompt_name` supports it
+  ([#1833](https://github.com/pry/pry/pull/1833))
 
 ##### Breaking changes
 
