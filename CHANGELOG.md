@@ -86,9 +86,10 @@
   `method_missing` and `respond_to?`
   ([#1811](https://github.com/pry/pry/pull/1811))
 * Fixed bug when indentation leaves parts of input after pressing enter when
-  Readline is enabled with mode indicators for vi or emacs modes
+  Readline is enabled with mode indicators for vi mode
   ([#1813](https://github.com/pry/pry/pull/1813),
-  [#1820](https://github.com/pry/pry/pull/1820))
+  [#1820](https://github.com/pry/pry/pull/1820),
+  [#1825](https://github.com/pry/pry/pull/1825))
 
 #### Other changes
 
